@@ -1,8 +1,7 @@
 import Foundation
-import Result
 
 struct MovieListParser {
-    func parse(data: NSData) -> Result<MovieList, ParseError> {
+    func parse(data: NSData) -> MovieList? {
         guard
             let json = try? NSJSONSerialization.JSONObjectWithData(
                 data,
@@ -11,20 +10,18 @@ struct MovieListParser {
             let moviesObj = json as? [String: AnyObject],
             let movies = moviesObj["movies"] as? [AnyObject] else
         {
-            return Result.Failure(ParseError.MissingKey)
+            return nil
         }
 
         let movieCollection: [Movie] = movies
-            .map { JsonMovieParser().parse($0) }
+            .map { SingleJsonMovieParser().parse($0) }
             .flatMap { $0 }
 
-        return Result.Success(
-            MovieList(movies: movieCollection)
-        )
+        return MovieList(movies: movieCollection)
     }
 }
 
-private struct JsonMovieParser {
+private struct SingleJsonMovieParser {
     func parse(json: AnyObject) -> Movie? {
         guard
             let movieObject = json as? [String: AnyObject],

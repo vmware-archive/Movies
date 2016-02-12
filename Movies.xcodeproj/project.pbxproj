@@ -13,8 +13,6 @@
 		AE1433831C6D5F50003297B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1433811C6D5F50003297B9 /* LaunchScreen.storyboard */; };
 		AE14338E1C6D5F50003297B9 /* MovieParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14338D1C6D5F50003297B9 /* MovieParserTest.swift */; };
 		AE1433991C6D62CC003297B9 /* MovieParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1433981C6D62CC003297B9 /* MovieParser.swift */; };
-		AE14339B1C6D64DD003297B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14339A1C6D64DD003297B9 /* Result.framework */; };
-		AE14339D1C6D65BB003297B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14339A1C6D64DD003297B9 /* Result.framework */; };
 		AE14339F1C6D69B7003297B9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14339E1C6D69B7003297B9 /* Movie.swift */; };
 		AE1433A11C6D6A06003297B9 /* MovieListParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1433A01C6D6A06003297B9 /* MovieListParserTest.swift */; };
 		AE1433A31C6D6A47003297B9 /* MovieListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1433A21C6D6A47003297B9 /* MovieListParser.swift */; };
@@ -42,7 +40,6 @@
 		AE14338D1C6D5F50003297B9 /* MovieParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieParserTest.swift; sourceTree = "<group>"; };
 		AE14338F1C6D5F50003297B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE1433981C6D62CC003297B9 /* MovieParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieParser.swift; sourceTree = "<group>"; };
-		AE14339A1C6D64DD003297B9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		AE14339E1C6D69B7003297B9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AE1433A01C6D6A06003297B9 /* MovieListParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListParserTest.swift; sourceTree = "<group>"; };
 		AE1433A21C6D6A47003297B9 /* MovieListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListParser.swift; sourceTree = "<group>"; };
@@ -54,7 +51,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE14339B1C6D64DD003297B9 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE14339D1C6D65BB003297B9 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +67,6 @@
 		AE14336C1C6D5F50003297B9 = {
 			isa = PBXGroup;
 			children = (
-				AE14339A1C6D64DD003297B9 /* Result.framework */,
 				AE1433771C6D5F50003297B9 /* Movies */,
 				AE14338C1C6D5F50003297B9 /* MoviesTests */,
 				AE1433761C6D5F50003297B9 /* Products */,
@@ -124,7 +118,6 @@
 				AE1433711C6D5F50003297B9 /* Sources */,
 				AE1433721C6D5F50003297B9 /* Frameworks */,
 				AE1433731C6D5F50003297B9 /* Resources */,
-				AE14339C1C6D64FA003297B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -209,23 +202,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		AE14339C1C6D64FA003297B9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AE1433711C6D5F50003297B9 /* Sources */ = {
@@ -358,8 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = Movies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -373,8 +348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = Movies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -388,8 +362,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = MoviesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -404,8 +377,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = MoviesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -434,6 +406,7 @@
 				AE1433941C6D5F50003297B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE1433951C6D5F50003297B9 /* Build configuration list for PBXNativeTarget "MoviesTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +415,7 @@
 				AE1433971C6D5F50003297B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,13 +1,7 @@
 import Foundation
 
-import Result
-
-enum ParseError: ErrorType {
-    case MissingKey
-}
-
 struct MovieParser {
-    func parse(data: NSData) -> Result<Movie, ParseError> {
+    func parse(data: NSData) -> Movie? {
         guard
             let json = try? NSJSONSerialization.JSONObjectWithData(
                 data,
@@ -17,11 +11,9 @@ struct MovieParser {
             let movieId = movieObject["id"] as? Int,
             let movieTitle = movieObject["title"] as? String else
         {
-            return Result.Failure(.MissingKey)
+            return nil
         }
 
-        return Result.Success(
-            Movie(id: movieId, title: movieTitle)
-        )
+        return Movie(id: movieId, title: movieTitle)
     }
 }
