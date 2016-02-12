@@ -57,7 +57,7 @@
 		AE19944E1C6D82E400196A36 /* ConfiguredNetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguredNetworkSession.swift; sourceTree = "<group>"; };
 		AE1994501C6D871C00196A36 /* FakeSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSession.swift; sourceTree = "<group>"; };
 		AE1994531C6D9A8100196A36 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = ../Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
-		AE1994571C6D9B6B00196A36 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		AE1994571C6D9B6B00196A36 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,6 @@
 		AE14336C1C6D5F50003297B9 = {
 			isa = PBXGroup;
 			children = (
-				AE1994571C6D9B6B00196A36 /* Result.framework */,
 				AE1433771C6D5F50003297B9 /* Movies */,
 				AE14338C1C6D5F50003297B9 /* MoviesTests */,
 				AE1433761C6D5F50003297B9 /* Products */,
@@ -104,18 +103,18 @@
 		AE1433771C6D5F50003297B9 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				AE1994521C6D9A4A00196A36 /* Frameworks */,
+				AE1433841C6D5F50003297B9 /* Info.plist */,
 				AE1433781C6D5F50003297B9 /* AppDelegate.swift */,
+				AE19944E1C6D82E400196A36 /* ConfiguredNetworkSession.swift */,
+				AE14339E1C6D69B7003297B9 /* Movie.swift */,
+				AE1433A41C6D6AB9003297B9 /* MovieList.swift */,
+				AE1433A21C6D6A47003297B9 /* MovieListParser.swift */,
+				AE1433981C6D62CC003297B9 /* MovieParser.swift */,
+				AE19944C1C6D81CD00196A36 /* NetworkHttp.swift */,
 				AE14337A1C6D5F50003297B9 /* ViewController.swift */,
 				AE14337F1C6D5F50003297B9 /* Assets.xcassets */,
+				AE1994521C6D9A4A00196A36 /* Frameworks */,
 				AE1433811C6D5F50003297B9 /* LaunchScreen.storyboard */,
-				AE1433841C6D5F50003297B9 /* Info.plist */,
-				AE1433981C6D62CC003297B9 /* MovieParser.swift */,
-				AE14339E1C6D69B7003297B9 /* Movie.swift */,
-				AE1433A21C6D6A47003297B9 /* MovieListParser.swift */,
-				AE1433A41C6D6AB9003297B9 /* MovieList.swift */,
-				AE19944C1C6D81CD00196A36 /* NetworkHttp.swift */,
-				AE19944E1C6D82E400196A36 /* ConfiguredNetworkSession.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -123,11 +122,11 @@
 		AE14338C1C6D5F50003297B9 /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE14338D1C6D5F50003297B9 /* MovieParserTest.swift */,
 				AE14338F1C6D5F50003297B9 /* Info.plist */,
-				AE1433A01C6D6A06003297B9 /* MovieListParserTest.swift */,
-				AE19944A1C6D818A00196A36 /* NetworkHttpTest.swift */,
 				AE1994501C6D871C00196A36 /* FakeSession.swift */,
+				AE1433A01C6D6A06003297B9 /* MovieListParserTest.swift */,
+				AE14338D1C6D5F50003297B9 /* MovieParserTest.swift */,
+				AE19944A1C6D818A00196A36 /* NetworkHttpTest.swift */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";
@@ -136,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				AE1994531C6D9A8100196A36 /* BrightFutures.framework */,
+				AE1994571C6D9B6B00196A36 /* Result.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -16,8 +16,7 @@ class MovieParserTest: XCTestCase {
     func test_parse_returnsErrorResultWhenFieldsAreMissing() {
         let parser = MovieParser()
         let noTitle = "{\"id\": 1}".dataUsingEncoding(NSUTF8StringEncoding)!
-        let result: Movie? = parser.parse(noTitle)
 
-        XCTAssertNil(result)
+        XCTAssertNil(parser.parse(noTitle))
     }
 }
