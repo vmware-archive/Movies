@@ -15,6 +15,7 @@
 		AE1433991C6D62CC003297B9 /* MovieParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1433981C6D62CC003297B9 /* MovieParser.swift */; };
 		AE14339B1C6D64DD003297B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14339A1C6D64DD003297B9 /* Result.framework */; };
 		AE14339D1C6D65BB003297B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14339A1C6D64DD003297B9 /* Result.framework */; };
+		AE14339F1C6D69B7003297B9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14339E1C6D69B7003297B9 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		AE14338F1C6D5F50003297B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE1433981C6D62CC003297B9 /* MovieParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieParser.swift; sourceTree = "<group>"; };
 		AE14339A1C6D64DD003297B9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		AE14339E1C6D69B7003297B9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				AE1433811C6D5F50003297B9 /* LaunchScreen.storyboard */,
 				AE1433841C6D5F50003297B9 /* Info.plist */,
 				AE1433981C6D62CC003297B9 /* MovieParser.swift */,
+				AE14339E1C6D69B7003297B9 /* Movie.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				AE14337B1C6D5F50003297B9 /* ViewController.swift in Sources */,
 				AE1433791C6D5F50003297B9 /* AppDelegate.swift in Sources */,
+				AE14339F1C6D69B7003297B9 /* Movie.swift in Sources */,
 				AE1433991C6D62CC003297B9 /* MovieParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

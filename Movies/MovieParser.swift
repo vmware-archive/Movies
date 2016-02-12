@@ -2,19 +2,8 @@ import Foundation
 
 import Result
 
-struct Movie {
-    let id: Int
-    let title: String
-}
-
-extension Movie: Equatable {}
-
 enum ParseError: ErrorType {
     case MissingKey
-}
-
-func ==(lhs: Movie, rhs: Movie) -> Bool {
-    return lhs.id == rhs.id && lhs.title == rhs.title
 }
 
 struct MovieParser {
