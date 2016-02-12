@@ -14,8 +14,7 @@ struct MovieListParser {
         }
 
         let movieCollection: [Movie] = movies
-            .map { SingleJsonMovieParser().parse($0) }
-            .flatMap { $0 }
+            .flatMap { SingleJsonMovieParser().parse($0) }
 
         return MovieList(movies: movieCollection)
     }
