@@ -3,12 +3,15 @@ import XCTest
 @testable import Movies
 
 class NetworkHttpTest: XCTestCase {
+    let fakeSession = FakeSession()
+    var networkHttp: NetworkHttp!
+
+    override func setUp() {
+        networkHttp = NetworkHttp(session: fakeSession)
+    }
+
     func test_get_configuresRequestURL() {
-        let fakeSession = FakeSession()
-        let http = NetworkHttp(session: fakeSession)
-
-
-        http.get("http://example.com/")
+        networkHttp.get("http://example.com/")
 
 
         let expectedRequest = NSURLRequest(
@@ -20,14 +23,11 @@ class NetworkHttpTest: XCTestCase {
     }
 
     func test_get_resolvesWithResponseData_forSuccessfulRequests() {
-        let fakeSession = FakeSession()
-        let http = NetworkHttp(session: fakeSession)
         let expectation = self.expectationWithDescription("Promise is resolved")
+        var actualData: NSData!
 
-        var actualData: NSData = NSData()
 
-
-        http.get("http://example.com/").onSuccess { data in
+        networkHttp.get("http://example.com/").onSuccess { data in
             actualData = data
             expectation.fulfill()
         }
@@ -36,15 +36,9 @@ class NetworkHttpTest: XCTestCase {
         let sampleData = "{\"message\": \"Hi there!\"}".dataUsingEncoding(
             NSUTF8StringEncoding
         )
-        let successfulResponse = NSHTTPURLResponse(
-            URL: NSURL(string: "http://example.com/")!,
-            statusCode: 200,
-            HTTPVersion: nil,
-            headerFields: nil
-        )
         fakeSession.dataTaskWithReqeust_completionHandler(
             sampleData,
-            successfulResponse,
+            buildResponse("http://example.com", statusCode: 200),
             nil
         )
 
@@ -54,28 +48,19 @@ class NetworkHttpTest: XCTestCase {
     }
 
     func test_get_resolvesWithError_forFailedRequests() {
-        let fakeSession = FakeSession()
-        let http = NetworkHttp(session: fakeSession)
         let expectation = self.expectationWithDescription("Promise is resolved")
+        var actualError: HttpError!
 
-        var actualError: HttpError = HttpError.BadRequest
 
-
-        http.get("http://example.com/").onFailure { error in
+        networkHttp.get("http://example.com/").onFailure { error in
             actualError = error
             expectation.fulfill()
         }
 
 
-        let badRequest = NSHTTPURLResponse(
-            URL: NSURL(string: "http://example.com/")!,
-            statusCode: 400,
-            HTTPVersion: nil,
-            headerFields: nil
-        )
         fakeSession.dataTaskWithReqeust_completionHandler(
             nil,
-            badRequest,
+            buildResponse("http://example.com/", statusCode: 400),
             nil
         )
 
@@ -85,33 +70,38 @@ class NetworkHttpTest: XCTestCase {
     }
 
     func test_get_resolvesWithError_forFailedRequestsWithDataInBody() {
-        let fakeSession = FakeSession()
-        let http = NetworkHttp(session: fakeSession)
         let expectation = self.expectationWithDescription("Promise is resolved")
+        var actualError: HttpError!
 
-        var actualError: HttpError = HttpError.BadRequest
 
-
-        http.get("http://example.com/").onFailure { error in
+        networkHttp.get("http://example.com/").onFailure { error in
             actualError = error
             expectation.fulfill()
         }
 
 
-        let badRequest = NSHTTPURLResponse(
-            URL: NSURL(string: "http://example.com/")!,
-            statusCode: 400,
-            HTTPVersion: nil,
-            headerFields: nil
-        )
         fakeSession.dataTaskWithReqeust_completionHandler(
             NSData(),
-            badRequest,
+            buildResponse("http://example.com/", statusCode: 400),
             nil
         )
 
         waitForExpectationsWithTimeout(1, handler: nil)
 
         XCTAssertEqual(actualError, HttpError.BadRequest)
+    }
+
+    private func buildResponse(url: String, statusCode: Int) -> NSHTTPURLResponse {
+        if let response = NSHTTPURLResponse(
+            URL: NSURL(string: url)!,
+            statusCode: statusCode,
+            HTTPVersion: nil,
+            headerFields: nil
+            )
+        {
+                return response
+        }
+
+        return NSHTTPURLResponse()
     }
 }
