@@ -16,11 +16,7 @@ struct MovieListParser {
 
         let movieCollection: [Movie] = movies
             .map { JsonMovieParser().parse($0) }
-            .filter { movieResult in
-                return movieResult.value != nil
-            }
-            .map { movieResult in movieResult.value! }
-
+            .flatMap { $0 }
 
         return Result.Success(
             MovieList(movies: movieCollection)
@@ -28,18 +24,16 @@ struct MovieListParser {
     }
 }
 
-struct JsonMovieParser {
-    func parse(json: AnyObject) -> Result<Movie, ParseError> {
+private struct JsonMovieParser {
+    func parse(json: AnyObject) -> Movie? {
         guard
             let movieObject = json as? [String: AnyObject],
             let movieId = movieObject["id"] as? Int,
             let movieTitle = movieObject["title"] as? String else
         {
-            return Result.Failure(.MissingKey)
+            return nil
         }
 
-        return Result.Success(
-            Movie(id: movieId, title: movieTitle)
-        )
+        return Movie(id: movieId, title: movieTitle)
     }
 }
