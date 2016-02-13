@@ -24,3 +24,7 @@ xcuserdata
 # Carthage/Checkouts
 
 Carthage/Build
+
+# API server
+
+node_modules
