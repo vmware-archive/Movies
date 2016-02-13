@@ -51,7 +51,7 @@ class MovieViewController: UIViewController {
     }
 }
 
-// MARK: - tableView
+// MARK: - UITableViewDataSource
 extension MovieViewController: UITableViewDataSource {
     func tableView(
         tableView: UITableView,
