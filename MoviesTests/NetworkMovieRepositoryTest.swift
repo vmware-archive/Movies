@@ -4,19 +4,22 @@ import BrightFutures
 @testable import Movies
 
 class NetworkMovieRepositoryTest: XCTestCase {
-    func test_getAll_parsesHttpResponse() {
-        let fakeHttp = FakeHttp()
-        let promise = Promise<NSData, HttpError>()
-        fakeHttp.get_returnValue = promise.future
-        let expectation = self.expectationWithDescription("Resolved Promise")
+    let promise = Promise<NSData, HttpError>()
+    let fakeHttp = FakeHttp()
 
-        let repository = NetworkMovieRepository(
+    var repository: NetworkMovieRepository<MovieListParser>!
+
+    override func setUp() {
+        fakeHttp.get_returnValue = promise.future
+
+        repository = NetworkMovieRepository(
             http: fakeHttp,
             parser: MovieListParser()
         )
-        let expectedMovieList = MovieList(
-            movies: [Movie(id: 3, title: "Lolita")]
-        )
+    }
+
+    func test_getAll_parsesHttpResponse() {
+        let expectation = self.expectationWithDescription("Resolved Promise")
         var actualMovieList: MovieList!
 
 
@@ -28,24 +31,20 @@ class NetworkMovieRepositoryTest: XCTestCase {
 
         XCTAssertEqual(fakeHttp.get_args, "http://localhost:8080/movies")
 
-        let jsonData = "{\"movies\": [{\"id\": 3, \"title\": \"Lolita\"}]}"
-            .dataUsingEncoding(NSUTF8StringEncoding)!
-        promise.success(jsonData)
+        promise.success(
+            "{\"movies\": [{\"id\": 3, \"title\": \"Lolita\"}]}"
+                .dataUsingEncoding(NSUTF8StringEncoding)!
+        )
         waitForExpectationsWithTimeout(1, handler: nil)
 
+        let expectedMovieList = MovieList(
+            movies: [Movie(id: 3, title: "Lolita")]
+        )
         XCTAssertEqual(expectedMovieList, actualMovieList)
     }
 
     func test_getAll_whenHttpRequestFails() {
-        let fakeHttp = FakeHttp()
-        let promise = Promise<NSData, HttpError>()
-        fakeHttp.get_returnValue = promise.future
         let expectation = self.expectationWithDescription("Resolved Promise")
-
-        let repository = NetworkMovieRepository(
-            http: fakeHttp,
-            parser: MovieListParser()
-        )
         var actualError: RepositoryError!
 
 
@@ -53,6 +52,7 @@ class NetworkMovieRepositoryTest: XCTestCase {
             actualError = error
             expectation.fulfill()
         }
+
 
         promise.failure(HttpError.BadRequest)
         waitForExpectationsWithTimeout(1, handler: nil)
@@ -61,15 +61,7 @@ class NetworkMovieRepositoryTest: XCTestCase {
     }
 
     func test_getAll_whenParseFails() {
-        let fakeHttp = FakeHttp()
-        let promise = Promise<NSData, HttpError>()
-        fakeHttp.get_returnValue = promise.future
         let expectation = self.expectationWithDescription("Resolved Promise")
-
-        let repository = NetworkMovieRepository(
-            http: fakeHttp,
-            parser: MovieListParser()
-        )
         var actualError: RepositoryError!
 
 
@@ -78,8 +70,8 @@ class NetworkMovieRepositoryTest: XCTestCase {
             expectation.fulfill()
         }
 
-        let badJson = "{\"movies".dataUsingEncoding(NSUTF8StringEncoding)!
-        promise.success(badJson)
+
+        promise.success("{\"movies".dataUsingEncoding(NSUTF8StringEncoding)!)
         waitForExpectationsWithTimeout(1, handler: nil)
 
         XCTAssertEqual(RepositoryError.FetchFailure, actualError)
