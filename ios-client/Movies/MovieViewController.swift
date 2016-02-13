@@ -51,6 +51,8 @@ class MovieViewController: UIViewController {
         loadMovieData()
     }
 
+    // MARK: - tap events
+
     func didPullToRefresh() {
         self.refreshControl.beginRefreshing()
 
@@ -58,6 +60,8 @@ class MovieViewController: UIViewController {
             self.refreshControl.endRefreshing()
         }
     }
+
+    // MARK: - private functions
 
     private func loadMovieData() -> Future<MovieList, RepositoryError> {
         return movieRepository.getAll().onSuccess { [unowned self] movieList in
