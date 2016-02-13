@@ -1,12 +1,10 @@
 import Foundation
 import Result
 
-enum ParseError: ErrorType {
-    case MalformedData
-}
+struct MovieListParser: DataParser {
+    typealias ParsedObject = MovieList
 
-struct MovieListParser {
-    func parse(data: NSData) -> Result<MovieList, ParseError> {
+    func parse(data: NSData) -> Result<MovieList, MovieParseError> {
         guard
             let json = try? NSJSONSerialization.JSONObjectWithData(
                 data,
@@ -15,7 +13,7 @@ struct MovieListParser {
             let moviesObj = json as? [String: AnyObject],
             let movies = moviesObj["movies"] as? [AnyObject] else
         {
-            return Result.Failure(ParseError.MalformedData)
+            return Result.Failure(MovieParseError.MalformedData)
         }
 
         let movieCollection: [Movie] = movies
