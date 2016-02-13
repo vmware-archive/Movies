@@ -5,7 +5,11 @@ enum RepositoryError: ErrorType {
     case FetchFailure
 }
 
-struct NetworkMovieRepository<P: DataParser where P.ParsedObject == MovieList> {
+protocol MovieRepository {
+    func getAll() -> Future<MovieList, RepositoryError>
+}
+
+struct NetworkMovieRepository<P: DataParser where P.ParsedObject == MovieList>: MovieRepository {
     let http: Http
     let parser: P
 

@@ -10,6 +10,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?
         ) -> Bool
     {
+        let movieRepository = NetworkMovieRepository(
+            http: NetworkHttp(session: ConfiguredNetworkSession()),
+            parser: MovieListParser()
+        )
+
+        let movieViewController = MovieViewController(
+            movieRepository: movieRepository
+        )
+
+        window = UIWindow()
+        window?.rootViewController = movieViewController
+        window?.makeKeyAndVisible()
+
         return true
     }
 }
