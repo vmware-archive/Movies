@@ -6,7 +6,7 @@ import BrightFutures
 
 class MovieViewControllerTest: XCTestCase {
     let fakeMovieRepository = FakeMovieRepository()
-    let promise = Promise<MovieList, RepositoryError>()
+    var promise = Promise<MovieList, RepositoryError>()
 
     var controller: MovieViewController!
 
@@ -66,5 +66,31 @@ class MovieViewControllerTest: XCTestCase {
         )
 
         XCTAssertEqual("The Shining", cell.textLabel?.text)
+    }
+
+    func test_tableView_refreshesData() {
+        let _ = controller.view
+        let initialAPIData = MovieList(movies: [])
+        promise.success(initialAPIData)
+        NSRunLoop.advance(by: NSTimeInterval(0.001))
+
+        let secondPromise = Promise<MovieList, RepositoryError>()
+        fakeMovieRepository.getAll_returnValue = secondPromise.future
+
+        XCTAssertFalse(controller.refreshControl.refreshing)
+
+
+        controller.refreshControl.sendActionsForControlEvents(
+            UIControlEvents.ValueChanged
+        )
+
+
+
+        XCTAssertTrue(controller.refreshControl.refreshing)
+
+        secondPromise.success(MovieList(movies: [Movie(id: 1, title: "2001")]))
+        NSRunLoop.advance(by: NSTimeInterval(0.001))
+
+        XCTAssertFalse(controller.refreshControl.refreshing)
     }
 }

@@ -1,9 +1,11 @@
 import UIKit
+import BrightFutures
 
 class MovieViewController: UIViewController {
     let movieRepository: MovieRepository
     var allMovies: MovieList
     let tableView: UITableView
+    let refreshControl: UIRefreshControl
 
     // MARK: - init
 
@@ -11,6 +13,7 @@ class MovieViewController: UIViewController {
         self.movieRepository = movieRepository
         self.allMovies = MovieList(movies: [])
         self.tableView = UITableView()
+        self.refreshControl = UIRefreshControl()
 
         super.init(nibName: nil, bundle: nil)
 
@@ -38,8 +41,26 @@ class MovieViewController: UIViewController {
         view.addSubview(tableView)
         tableView.frame = view.frame
         tableView.backgroundColor = UIColor.redColor()
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(
+            self,
+            action: "didPullToRefresh",
+            forControlEvents: UIControlEvents.ValueChanged
+        )
 
-        movieRepository.getAll().onSuccess { [unowned self] movieList in
+        loadMovieData()
+    }
+
+    func didPullToRefresh() {
+        self.refreshControl.beginRefreshing()
+
+        loadMovieData().onSuccess { [unowned self] _ in
+            self.refreshControl.endRefreshing()
+        }
+    }
+
+    private func loadMovieData() -> Future<MovieList, RepositoryError> {
+        return movieRepository.getAll().onSuccess { [unowned self] movieList in
             self.allMovies = movieList
             self.tableView.reloadData()
         }
