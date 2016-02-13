@@ -28,3 +28,4 @@ Carthage/Build
 # API server
 
 node_modules
+.DS_Store
