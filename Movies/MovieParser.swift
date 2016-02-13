@@ -1,7 +1,8 @@
 import Foundation
+import Result
 
 struct MovieParser {
-    func parse(data: NSData) -> Movie? {
+    func parse(data: NSData) -> Result<Movie, ParseError> {
         guard
             let json = try? NSJSONSerialization.JSONObjectWithData(
                 data,
@@ -11,9 +12,9 @@ struct MovieParser {
             let movieId = movieObject["id"] as? Int,
             let movieTitle = movieObject["title"] as? String else
         {
-            return nil
+            return Result.Failure(ParseError.MalformedData)
         }
 
-        return Movie(id: movieId, title: movieTitle)
+        return Result.Success(Movie(id: movieId, title: movieTitle))
     }
 }

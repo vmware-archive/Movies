@@ -1,4 +1,5 @@
 import XCTest
+import Result
 
 @testable import Movies
 
@@ -13,28 +14,29 @@ class MovieListParserTest: XCTestCase {
             .dataUsingEncoding(NSUTF8StringEncoding)!
 
 
-        let parseResult: MovieList? = parser.parse(jsonData)
+        let parseResult: Result<MovieList, ParseError> = parser.parse(jsonData)
 
-        XCTAssertEqual(expectedList, parseResult)
+        XCTAssertEqual(expectedList, parseResult.value)
     }
 
     func test_parse_returnsFailedOnMalformedJson() {
         let badJson = "{\"onions\": []}".dataUsingEncoding(NSUTF8StringEncoding)!
 
-        let parseResult: MovieList? = parser.parse(badJson)
+        let parseResult: Result<MovieList, ParseError> = parser.parse(badJson)
 
-        XCTAssertNil(parseResult)
+        XCTAssertNil(parseResult.value)
+        XCTAssertEqual(ParseError.MalformedData, parseResult.error)
     }
 
     func test_parse_skipsSingleMalformedRecords() {
         let badJson = "{\"movies\": [{\"id\": 1}, {\"id\": 2, \"title\": \"Barry Lyndon\"}]}"
             .dataUsingEncoding(NSUTF8StringEncoding)!
 
-        let parseResult: MovieList? = parser.parse(badJson)
+        let parseResult: Result<MovieList, ParseError> = parser.parse(badJson)
         let expectedResult = MovieList(
             movies: [Movie(id: 2, title: "Barry Lyndon")]
         )
 
-        XCTAssertEqual(expectedResult, parseResult)
+        XCTAssertEqual(expectedResult, parseResult.value)
     }
 }
