@@ -28,7 +28,7 @@ class MovieViewControllerTest: XCTestCase {
         let moviesFromAPI = MovieList(movies: [Movie(id: 1, title: "2001")])
         promise.success(moviesFromAPI)
 
-        NSRunLoop.advance(by: NSTimeInterval(0.001))
+        NSRunLoop.advance(by: 0.01)
 
         XCTAssertEqual(moviesFromAPI, controller.allMovies)
     }
