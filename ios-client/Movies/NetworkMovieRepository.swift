@@ -9,7 +9,9 @@ protocol MovieRepository {
     func getAll() -> Future<MovieList, RepositoryError>
 }
 
-struct NetworkMovieRepository<P: DataParser where P.ParsedObject == MovieList> {
+struct NetworkMovieRepository
+    <P: DataParser where P.ParsedObject == MovieList>
+{
     let http: Http
     let parser: P
 }
