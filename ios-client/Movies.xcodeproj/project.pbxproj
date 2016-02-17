@@ -11,6 +11,8 @@
 		9D7FC3771C6E2D84005B37A4 /* FakeHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FC3761C6E2D84005B37A4 /* FakeHttp.swift */; };
 		9D7FC37B1C6E3310005B37A4 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FC37A1C6E3310005B37A4 /* DataParser.swift */; };
 		9D7FC37D1C6E3AF0005B37A4 /* NetworkMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7FC37C1C6E3AF0005B37A4 /* NetworkMovieRepository.swift */; };
+		9DC469891C74927900246415 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC469881C74927900246415 /* main.swift */; };
+		9DC4698B1C74997300246415 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4698A1C74997300246415 /* Environment.swift */; };
 		9DEB2EC21C6ED81900A22245 /* MovieParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB2EC11C6ED81900A22245 /* MovieParseError.swift */; };
 		9DEB2EC81C6F310D00A22245 /* MovieViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB2EC71C6F310D00A22245 /* MovieViewControllerTest.swift */; };
 		9DEB2ECA1C6F3CDE00A22245 /* ExtensionsForTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEB2EC91C6F3CDE00A22245 /* ExtensionsForTest.swift */; };
@@ -49,6 +51,8 @@
 		9D7FC3761C6E2D84005B37A4 /* FakeHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeHttp.swift; sourceTree = "<group>"; };
 		9D7FC37A1C6E3310005B37A4 /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		9D7FC37C1C6E3AF0005B37A4 /* NetworkMovieRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMovieRepository.swift; sourceTree = "<group>"; };
+		9DC469881C74927900246415 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9DC4698A1C74997300246415 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9DEB2EC11C6ED81900A22245 /* MovieParseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieParseError.swift; sourceTree = "<group>"; };
 		9DEB2EC71C6F310D00A22245 /* MovieViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewControllerTest.swift; sourceTree = "<group>"; };
 		9DEB2EC91C6F3CDE00A22245 /* ExtensionsForTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsForTest.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				AE1433781C6D5F50003297B9 /* AppDelegate.swift */,
 				AE19944E1C6D82E400196A36 /* ConfiguredNetworkSession.swift */,
 				9D7FC37A1C6E3310005B37A4 /* DataParser.swift */,
+				9DC4698A1C74997300246415 /* Environment.swift */,
+				9DC469881C74927900246415 /* main.swift */,
 				AE14339E1C6D69B7003297B9 /* Movie.swift */,
 				AE1433A41C6D6AB9003297B9 /* MovieList.swift */,
 				AE1433A21C6D6A47003297B9 /* MovieListParser.swift */,
@@ -273,11 +279,13 @@
 			files = (
 				AE1433A51C6D6AB9003297B9 /* MovieList.swift in Sources */,
 				AE19944D1C6D81CD00196A36 /* NetworkHttp.swift in Sources */,
+				9DC469891C74927900246415 /* main.swift in Sources */,
 				9DEB2EC21C6ED81900A22245 /* MovieParseError.swift in Sources */,
 				AE1433A31C6D6A47003297B9 /* MovieListParser.swift in Sources */,
 				AE14337B1C6D5F50003297B9 /* MovieViewController.swift in Sources */,
 				AE1433791C6D5F50003297B9 /* AppDelegate.swift in Sources */,
 				9D7FC37B1C6E3310005B37A4 /* DataParser.swift in Sources */,
+				9DC4698B1C74997300246415 /* Environment.swift in Sources */,
 				AE19944F1C6D82E400196A36 /* ConfiguredNetworkSession.swift in Sources */,
 				AE14339F1C6D69B7003297B9 /* Movie.swift in Sources */,
 				AE1433991C6D62CC003297B9 /* MovieParser.swift in Sources */,
