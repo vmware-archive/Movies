@@ -83,8 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE1994581C6D9B6B00196A36 /* Result.framework in Frameworks */,
 				AE1994541C6D9A8100196A36 /* BrightFutures.framework in Frameworks */,
+				AE1994581C6D9B6B00196A36 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,11 +123,12 @@
 		AE1433771C6D5F50003297B9 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				AE1433841C6D5F50003297B9 /* Info.plist */,
 				AE1433781C6D5F50003297B9 /* AppDelegate.swift */,
 				AE19944E1C6D82E400196A36 /* ConfiguredNetworkSession.swift */,
 				9D7FC37A1C6E3310005B37A4 /* DataParser.swift */,
 				9DC4698A1C74997300246415 /* Environment.swift */,
+				AE1433841C6D5F50003297B9 /* Info.plist */,
+				AE1433811C6D5F50003297B9 /* LaunchScreen.storyboard */,
 				9DC469881C74927900246415 /* main.swift */,
 				AE14339E1C6D69B7003297B9 /* Movie.swift */,
 				AE1433A41C6D6AB9003297B9 /* MovieList.swift */,
@@ -137,7 +138,6 @@
 				AE14337A1C6D5F50003297B9 /* MovieViewController.swift */,
 				AE19944C1C6D81CD00196A36 /* NetworkHttp.swift */,
 				9D7FC37C1C6E3AF0005B37A4 /* NetworkMovieRepository.swift */,
-				AE1433811C6D5F50003297B9 /* LaunchScreen.storyboard */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -145,11 +145,11 @@
 		AE14338C1C6D5F50003297B9 /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE14338F1C6D5F50003297B9 /* Info.plist */,
 				9DEB2EC91C6F3CDE00A22245 /* ExtensionsForTest.swift */,
 				9D7FC3761C6E2D84005B37A4 /* FakeHttp.swift */,
 				9DEB2ECB1C6F42FE00A22245 /* FakeMovieRepository.swift */,
 				AE1994501C6D871C00196A36 /* FakeSession.swift */,
+				AE14338F1C6D5F50003297B9 /* Info.plist */,
 				AE1433A01C6D6A06003297B9 /* MovieListParserTest.swift */,
 				AE14338D1C6D5F50003297B9 /* MovieParserTest.swift */,
 				9DEB2EC71C6F310D00A22245 /* MovieViewControllerTest.swift */,
@@ -277,18 +277,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE1433A51C6D6AB9003297B9 /* MovieList.swift in Sources */,
-				AE19944D1C6D81CD00196A36 /* NetworkHttp.swift in Sources */,
-				9DC469891C74927900246415 /* main.swift in Sources */,
-				9DEB2EC21C6ED81900A22245 /* MovieParseError.swift in Sources */,
-				AE1433A31C6D6A47003297B9 /* MovieListParser.swift in Sources */,
-				AE14337B1C6D5F50003297B9 /* MovieViewController.swift in Sources */,
 				AE1433791C6D5F50003297B9 /* AppDelegate.swift in Sources */,
+				AE19944F1C6D82E400196A36 /* ConfiguredNetworkSession.swift in Sources */,
 				9D7FC37B1C6E3310005B37A4 /* DataParser.swift in Sources */,
 				9DC4698B1C74997300246415 /* Environment.swift in Sources */,
-				AE19944F1C6D82E400196A36 /* ConfiguredNetworkSession.swift in Sources */,
+				9DC469891C74927900246415 /* main.swift in Sources */,
 				AE14339F1C6D69B7003297B9 /* Movie.swift in Sources */,
+				AE1433A51C6D6AB9003297B9 /* MovieList.swift in Sources */,
+				AE1433A31C6D6A47003297B9 /* MovieListParser.swift in Sources */,
+				9DEB2EC21C6ED81900A22245 /* MovieParseError.swift in Sources */,
 				AE1433991C6D62CC003297B9 /* MovieParser.swift in Sources */,
+				AE14337B1C6D5F50003297B9 /* MovieViewController.swift in Sources */,
+				AE19944D1C6D81CD00196A36 /* NetworkHttp.swift in Sources */,
 				9D7FC37D1C6E3AF0005B37A4 /* NetworkMovieRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,15 +297,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D7FC3771C6E2D84005B37A4 /* FakeHttp.swift in Sources */,
 				9DEB2ECA1C6F3CDE00A22245 /* ExtensionsForTest.swift in Sources */,
-				AE14338E1C6D5F50003297B9 /* MovieParserTest.swift in Sources */,
+				9D7FC3771C6E2D84005B37A4 /* FakeHttp.swift in Sources */,
 				9DEB2ECC1C6F42FE00A22245 /* FakeMovieRepository.swift in Sources */,
-				9DEB2EC81C6F310D00A22245 /* MovieViewControllerTest.swift in Sources */,
+				AE1994511C6D871C00196A36 /* FakeSession.swift in Sources */,
 				AE1433A11C6D6A06003297B9 /* MovieListParserTest.swift in Sources */,
+				AE14338E1C6D5F50003297B9 /* MovieParserTest.swift in Sources */,
+				9DEB2EC81C6F310D00A22245 /* MovieViewControllerTest.swift in Sources */,
 				AE19944B1C6D818A00196A36 /* NetworkHttpTest.swift in Sources */,
 				9D7FC3751C6E2C27005B37A4 /* NetworkMovieRepositoryTest.swift in Sources */,
-				AE1994511C6D871C00196A36 /* FakeSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
