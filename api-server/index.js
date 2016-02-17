@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require("express");
 var app = express();
 var logger = require("morgan");
 
@@ -10,11 +10,11 @@ var movies = {movies: [
 
 app.use(logger("combined"));
 
-app.get('/movies', function (req, res) {
+app.get("/movies", function (req, res) {
   res.send(movies);
 });
 
 app.listen(8080, function () {
-    console.log('Example app listening on port 8080!');
+    console.log("Example app listening on port 8080!");
 });
 
