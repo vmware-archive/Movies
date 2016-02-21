@@ -4,7 +4,7 @@ func startApp(delegateName: String) {
     UIApplicationMain(
         Process.argc,
         Process.unsafeArgv,
-        delegateName,
+        NSStringFromClass(UIApplication),
         delegateName
     )
 }
