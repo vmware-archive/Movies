@@ -89,7 +89,7 @@ class MovieViewControllerTest: XCTestCase {
         XCTAssertTrue(controller.refreshControl.refreshing)
 
         secondPromise.success(MovieList(movies: [Movie(id: 1, title: "2001")]))
-        NSRunLoop.advance(by: NSTimeInterval(0.001))
+        NSRunLoop.advance(by: NSTimeInterval(0.01))
 
         XCTAssertFalse(controller.refreshControl.refreshing)
     }
