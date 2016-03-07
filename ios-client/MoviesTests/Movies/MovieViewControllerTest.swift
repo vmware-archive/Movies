@@ -61,7 +61,7 @@ class MovieViewControllerTest: XCTestCase {
         )
 
         let cell: UITableViewCell = controller.tableView(
-            UITableView(),
+            controller.tableView,
             cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)
         )
 

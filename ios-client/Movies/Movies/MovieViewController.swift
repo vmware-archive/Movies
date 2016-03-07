@@ -1,6 +1,11 @@
 import UIKit
 import BrightFutures
 
+
+class GenericCell: UITableViewCell {
+}
+let genericCellIdenifier = NSStringFromClass(GenericCell.self)
+
 class MovieViewController: UIViewController {
     let movieRepository: MovieRepository
     var allMovies: MovieList
@@ -18,6 +23,10 @@ class MovieViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         self.tableView.dataSource = self
+        self.tableView.registerClass(
+            GenericCell.self,
+            forCellReuseIdentifier: genericCellIdenifier
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -91,8 +100,13 @@ extension MovieViewController: UITableViewDataSource {
         cellForRowAtIndexPath indexPath: NSIndexPath
         ) -> UITableViewCell
     {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            genericCellIdenifier,
+            forIndexPath: indexPath
+        )
+
         cell.textLabel?.text = allMovies.movies[indexPath.row].title
+
         return cell
     }
 }
