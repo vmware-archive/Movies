@@ -103,11 +103,11 @@
 		9D1A81371C8D927C00BB6264 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				9D462E5F1C8D93C700D43273 /* Info.plist */,
 				9D462E5A1C8D93C700D43273 /* AppDelegate.swift */,
 				9D462E5E1C8D93C700D43273 /* Environment.swift */,
-				9D462E601C8D93C700D43273 /* main.swift */,
+				9D462E5F1C8D93C700D43273 /* Info.plist */,
 				9D462E661C8D93D500D43273 /* LaunchScreen.storyboard */,
+				9D462E601C8D93C700D43273 /* main.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -167,14 +167,22 @@
 			path = TestApplication;
 			sourceTree = "<group>";
 		};
+		9D77B6AF1C8D988500148032 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE1994531C6D9A8100196A36 /* BrightFutures.framework */,
+				AE1994571C6D9B6B00196A36 /* Result.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE14336C1C6D5F50003297B9 = {
 			isa = PBXGroup;
 			children = (
+				9D77B6AF1C8D988500148032 /* Frameworks */,
 				AE1433771C6D5F50003297B9 /* Movies */,
 				AE14338C1C6D5F50003297B9 /* MoviesTests */,
 				AE1433761C6D5F50003297B9 /* Products */,
-				AE1994531C6D9A8100196A36 /* BrightFutures.framework */,
-				AE1994571C6D9B6B00196A36 /* Result.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,18 +334,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D462E611C8D93C700D43273 /* AppDelegate.swift in Sources */,
-				9DB285E91C8D941F005B1328 /* MovieParser.swift in Sources */,
-				9DB285F01C8D9427005B1328 /* DataParser.swift in Sources */,
-				9DB285E81C8D941F005B1328 /* MovieParseError.swift in Sources */,
-				9D462E651C8D93C700D43273 /* main.swift in Sources */,
-				9DB285F21C8D9427005B1328 /* NetworkMovieRepository.swift in Sources */,
-				9DB285E51C8D941F005B1328 /* Movie.swift in Sources */,
 				9DB285EF1C8D9427005B1328 /* ConfiguredNetworkSession.swift in Sources */,
-				9DB285EA1C8D941F005B1328 /* MovieViewController.swift in Sources */,
-				9DB285E71C8D941F005B1328 /* MovieListParser.swift in Sources */,
-				9DB285E61C8D941F005B1328 /* MovieList.swift in Sources */,
-				9DB285F11C8D9427005B1328 /* NetworkHttp.swift in Sources */,
+				9DB285F01C8D9427005B1328 /* DataParser.swift in Sources */,
 				9D462E631C8D93C700D43273 /* Environment.swift in Sources */,
+				9D462E651C8D93C700D43273 /* main.swift in Sources */,
+				9DB285E51C8D941F005B1328 /* Movie.swift in Sources */,
+				9DB285E61C8D941F005B1328 /* MovieList.swift in Sources */,
+				9DB285E71C8D941F005B1328 /* MovieListParser.swift in Sources */,
+				9DB285E81C8D941F005B1328 /* MovieParseError.swift in Sources */,
+				9DB285E91C8D941F005B1328 /* MovieParser.swift in Sources */,
+				9DB285EA1C8D941F005B1328 /* MovieViewController.swift in Sources */,
+				9DB285F11C8D9427005B1328 /* NetworkHttp.swift in Sources */,
+				9DB285F21C8D9427005B1328 /* NetworkMovieRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,15 +353,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D77B6A21C8D967B00148032 /* MovieParserTest.swift in Sources */,
-				9D77B6A51C8D967B00148032 /* FakeSession.swift in Sources */,
-				9D77B6A71C8D967B00148032 /* NetworkMovieRepositoryTest.swift in Sources */,
-				9D77B6A01C8D967B00148032 /* FakeMovieRepository.swift in Sources */,
-				9D77B6A61C8D967B00148032 /* NetworkHttpTest.swift in Sources */,
 				9D77B6A81C8D967B00148032 /* ExtensionsForTest.swift in Sources */,
-				9D77B6A11C8D967B00148032 /* MovieListParserTest.swift in Sources */,
 				9D77B6A41C8D967B00148032 /* FakeHttp.swift in Sources */,
+				9D77B6A01C8D967B00148032 /* FakeMovieRepository.swift in Sources */,
+				9D77B6A51C8D967B00148032 /* FakeSession.swift in Sources */,
+				9D77B6A11C8D967B00148032 /* MovieListParserTest.swift in Sources */,
+				9D77B6A21C8D967B00148032 /* MovieParserTest.swift in Sources */,
 				9D77B6A31C8D967B00148032 /* MovieViewControllerTest.swift in Sources */,
+				9D77B6A61C8D967B00148032 /* NetworkHttpTest.swift in Sources */,
+				9D77B6A71C8D967B00148032 /* NetworkMovieRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
