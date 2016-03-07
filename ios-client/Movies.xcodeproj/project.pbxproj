@@ -158,12 +158,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		9D77B69D1C8D967B00148032 /* TestApplication */ = {
+		9D77B69D1C8D967B00148032 /* ApplicationTest */ = {
 			isa = PBXGroup;
 			children = (
 				9D77B69E1C8D967B00148032 /* ExtensionsForTest.swift */,
 				9D77B69F1C8D967B00148032 /* Info.plist */,
 			);
+			name = ApplicationTest;
 			path = TestApplication;
 			sourceTree = "<group>";
 		};
@@ -208,9 +209,9 @@
 		AE14338C1C6D5F50003297B9 /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D77B69D1C8D967B00148032 /* ApplicationTest */,
 				9D77B6931C8D967B00148032 /* Movies */,
 				9D77B6981C8D967B00148032 /* Network */,
-				9D77B69D1C8D967B00148032 /* TestApplication */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";
