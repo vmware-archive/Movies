@@ -12,11 +12,12 @@ struct MovieParser: DataParser {
             ),
             let movieObject = json as? [String: AnyObject],
             let movieId = movieObject["id"] as? Int,
-            let movieTitle = movieObject["title"] as? String else
+            let movieTitle = movieObject["title"] as? String,
+            let movieDirector = movieObject["director"] as? String else
         {
             return Result.Failure(MovieParseError.MalformedData)
         }
 
-        return Result.Success(Movie(id: movieId, title: movieTitle))
+        return Result.Success(Movie(id: movieId, title: movieTitle, director: movieDirector))
     }
 }

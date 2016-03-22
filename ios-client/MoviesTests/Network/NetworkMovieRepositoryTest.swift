@@ -32,13 +32,16 @@ class NetworkMovieRepositoryTest: XCTestCase {
         XCTAssertEqual(fakeHttp.get_args, "http://localhost:8080/movies")
 
         promise.success(
-            "{\"movies\": [{\"id\": 3, \"title\": \"Lolita\"}]}"
+            ("{\"movies\": [{" +
+                "\"id\": 3," +
+                "\"title\": \"Lolita\"," +
+                "\"director\":\"Stanley Kubrick\"}]}")
                 .dataUsingEncoding(NSUTF8StringEncoding)!
         )
         waitForExpectationsWithTimeout(1, handler: nil)
 
         let expectedMovieList = MovieList(
-            movies: [Movie(id: 3, title: "Lolita")]
+            movies: [Movie(id: 3, title: "Lolita", director: "Stanley Kubrick")]
         )
         XCTAssertEqual(expectedMovieList, actualMovieList)
     }

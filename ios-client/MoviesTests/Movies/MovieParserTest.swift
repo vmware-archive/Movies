@@ -7,11 +7,16 @@ import Result
 class MovieParserTest: XCTestCase {
     func test_parse_createsMovieObjects() {
         let parser = MovieParser()
-        let jsonData = "{\"id\": 1, \"title\": \"The Shining\"}"
+        let jsonData = ("{\"id\": 1," +
+            "\"title\": \"The Shining\"," +
+            "\"director\": \"Stanley Kubrick\"}")
             .dataUsingEncoding(NSUTF8StringEncoding)!
         let actualMovie: Result<Movie, MovieParseError> = parser.parse(jsonData)
 
-        XCTAssertEqual(Movie(id: 1, title: "The Shining"), actualMovie.value)
+        XCTAssertEqual(
+            Movie(id: 1, title: "The Shining", director: "Stanley Kubrick"),
+            actualMovie.value
+        )
     }
 
     func test_parse_returnsErrorResultWhenFieldsAreMissing() {

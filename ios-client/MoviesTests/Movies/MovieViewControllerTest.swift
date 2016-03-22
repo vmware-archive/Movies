@@ -25,7 +25,7 @@ class MovieViewControllerTest: XCTestCase {
 
         XCTAssertTrue(fakeMovieRepository.getAll_wasCalled)
 
-        let moviesFromAPI = MovieList(movies: [Movie(id: 1, title: "2001")])
+        let moviesFromAPI = MovieList(movies: [MovieFixtures.newMovie()])
         promise.success(moviesFromAPI)
 
         NSRunLoop.advance(by: 0.01)
@@ -37,7 +37,7 @@ class MovieViewControllerTest: XCTestCase {
 
     func test_tableView_returnsNumberOfRowsBasedOnMovieCount() {
         controller.allMovies = MovieList(
-            movies: [Movie(id: 1, title: "The Shining")]
+            movies: [MovieFixtures.newMovie()]
         )
         var numberOfRows = controller.tableView(
             UITableView(),
@@ -57,7 +57,7 @@ class MovieViewControllerTest: XCTestCase {
 
     func test_tableView_returnsCellsWithMovieTitle() {
         controller.allMovies = MovieList(
-            movies: [Movie(id: 1, title: "The Shining")]
+            movies: [MovieFixtures.newMovie()]
         )
 
         let cell: UITableViewCell = controller.tableView(
@@ -88,7 +88,7 @@ class MovieViewControllerTest: XCTestCase {
 
         XCTAssertTrue(controller.refreshControl.refreshing)
 
-        secondPromise.success(MovieList(movies: [Movie(id: 1, title: "2001")]))
+        secondPromise.success(MovieList(movies: [MovieFixtures.newMovie()]))
         NSRunLoop.advance(by: NSTimeInterval(0.01))
 
         XCTAssertFalse(controller.refreshControl.refreshing)

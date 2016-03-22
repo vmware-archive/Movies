@@ -1,16 +1,13 @@
 import UIKit
 import BrightFutures
 
-
-class GenericCell: UITableViewCell {
-}
-let genericCellIdenifier = NSStringFromClass(GenericCell.self)
-
 class MovieViewController: UIViewController {
+    // MARK: properties
     let movieRepository: MovieRepository
-    var allMovies: MovieList
     let tableView: UITableView
     let refreshControl: UIRefreshControl
+
+    var allMovies: MovieList
 
     // MARK: - init
 
@@ -106,6 +103,8 @@ extension MovieViewController: UITableViewDataSource {
         )
 
         cell.textLabel?.text = allMovies.movies[indexPath.row].title
+        cell.detailTextLabel?.text = "Subtitle"
+
 
         return cell
     }
