@@ -13,26 +13,29 @@ The stability of BrightFutures has been proven through extensive use in producti
 ## Latest news
 [![Travis CI build status badge](https://travis-ci.org/Thomvis/BrightFutures.svg?branch=master)](https://travis-ci.org/Thomvis/BrightFutures) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods version](https://img.shields.io/cocoapods/v/BrightFutures.svg)](https://cocoapods.org/pods/BrightFutures) [![MIT License](https://img.shields.io/cocoapods/l/BrightFutures.svg)](LICENSE) ![Platform iOS OS X](https://img.shields.io/cocoapods/p/BrightFutures.svg)
 
-BrightFutures 3.0 is now available! Major parts of the framework have been rewritten for Swift 2 in order to leverage its power and provide the best compatibility. Please check the [Migration guide](Documentation/Migration_3.0.md) for help on how to migrate your project to BrightFutures 3.0.
+BrightFutures 4.0 is now available! This update adds Swift 2.2 compatibility and contains a few minor breaking changes that should require only a little bit of work in projects upgrading from BrightFutures 3.x. Please check the [Migration guide](Documentation/Migration_4.0.md) for help on how to migrate your project to BrightFutures 4.0.
 
 ## Installation
 ### [CocoaPods](http://cocoapods.org/)
-Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
 
-```rb
-pod 'BrightFutures'
-```
+1. Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
 
-Make sure that you are integrating your dependencies using frameworks: add `use_frameworks!` to your Podfile. Then run `pod install`.
+    ```rb
+    pod 'BrightFutures'
+    ```
+
+2. Integrate your dependencies using frameworks: add `use_frameworks!` to your Podfile. 
+3. Run `pod install`.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
-Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
 
-```
-github "Thomvis/BrightFutures"
-```
+1. Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
 
-Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+    ```
+    github "Thomvis/BrightFutures"
+    ```
+
+2. Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 ## Documentation
 - API documentation is available at the wonderful [cocoadocs.org](http://cocoadocs.org/docsets/BrightFutures)
@@ -88,6 +91,10 @@ future {
 While this is really short and simple, it is equally limited. In many cases, you will need a way to indicate that the task failed. To do this, instead of returning the value, you can return a Result. Results can indicate either a success or a failure:
 
 ```swift
+enum ReadmeError: ErrorType {
+    case RequestFailed, TimeServiceError
+}
+
 let f = future { () -> Result<NSDate, ReadmeError> in
    let now: NSDate? = serverTime()
     if let now = now {
@@ -102,7 +109,7 @@ f.onSuccess { value in
 }
 ```
 
-The future block needs an explict type because the Swift compiler is not able to deduce the type of multi-statement blocks. `ReadmeError` is an enum consisting of all errors that can happen in this readme.
+The future block needs an explicit type because the Swift compiler is not able to deduce the type of multi-statement blocks.
 
 ## Providing Futures
 Now let's assume the role of an API author who wants to use BrightFutures. The 'producer' of a future is called a `Promise`. A promise contains a future that you can immediately hand to the client. The promise is kept around while performing the asynchronous operation, until calling `Promise.success(result)` or `Promise.failure(error)` when the operation ended. Futures can only be completed through a Promise.
@@ -152,7 +159,7 @@ let f = Future<Int, NoError>(value: 4).andThen { result in
 
 ### map
 
-`map` returns a new Future that contains the error from this Future if this Future failed, or the return value from the given closure that was applied to the value of this Future. There's also a `flatMap` function that can be used to map the result of a future to the value of a new Future.
+`map` returns a new Future that contains the error from this Future if this Future failed, or the return value from the given closure that was applied to the value of this Future.
 
 ```swift
 future {
@@ -166,6 +173,22 @@ future {
     sizeString == "large"
 }.onSuccess { numberIsLarge in
     // numberIsLarge is true
+}
+```
+
+### flatMap
+
+`flatMap` is used to map the result of a future to the value of a new Future.
+
+```swift
+future {
+    fibonacci(10)
+}.flatMap { number in
+    future {
+        fibonacci(number)
+    }
+}.onSuccess { largeNumber in
+    // largeNumber is 139583862445
 }
 ```
 

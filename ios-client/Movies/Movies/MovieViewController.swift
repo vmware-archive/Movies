@@ -50,7 +50,7 @@ class MovieViewController: UIViewController {
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(
             self,
-            action: "didPullToRefresh",
+            action: #selector(MovieViewController.didPullToRefresh),
             forControlEvents: UIControlEvents.ValueChanged
         )
 
